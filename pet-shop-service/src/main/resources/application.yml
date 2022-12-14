@@ -1,0 +1,14 @@
+
+spring:
+  security:
+    oauth2:
+      client:
+        registration:
+          users-service-registration:
+            provider: pet-shop-service
+            client-id: pet_shop
+            client-secret: WwrMhX5YfglrHqFaDEl4EwM6hTzUXAeL
+            authorization-grant-type: client_credentials
+        provider:
+          pet-shop-service:
+            issuer-uri: http://localhost:8082/realms/digitalhouse
