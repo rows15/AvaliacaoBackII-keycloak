@@ -24,9 +24,10 @@ public class KeycloakInterceptorConfiguration {
         final OAuth2AuthorizedClientManager authorizedClientManager = getAuthorizedClientManager();
         OAuthClientCredentialsFeignManager clientCredentialsFeignManager = new OAuthClientCredentialsFeignManager(authorizedClientManager, client);
         String token = clientCredentialsFeignManager.getAccessToken();
-        log.info("Token na camada de request interceptor é" + token);
+        log.info("O Bearer token é " + token);
         return requestInterceptor -> requestInterceptor
-                .header("Authentication", "Bearer " + token);
+                //.header("Authentication", "Bearer " + token);
+                .header("Authorization", "Bearer " + token);
     }
 
     private OAuth2AuthorizedClientManager getAuthorizedClientManager() {
